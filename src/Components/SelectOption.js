@@ -10,13 +10,14 @@ const useStyles = makeStyles((theme) => ({
 	formControl: {
 		margin: theme.spacing(1),
 		minWidth: 120,
+		width: "100%",
 	},
 	selectEmpty: {
 		marginTop: theme.spacing(2),
 	},
 }));
 
-export default function SelectOption({ label, data }) {
+export default function SelectOption({ label, data, country }) {
 	const classes = useStyles();
 
 	const [age, setAge] = React.useState("");
@@ -27,18 +28,29 @@ export default function SelectOption({ label, data }) {
 	return (
 		<>
 			<FormControl className={classes.formControl}>
-				<InputLabel id="demo-simple-select-label">{label}</InputLabel>
+				<InputLabel>{label}</InputLabel>
 				<Select
 					labelId="demo-simple-select-label"
-					id="demo-simple-select"
 					value={age}
 					onChange={handleChange}
 				>
 					{data === null || data === undefined ? (
 						<MenuItem value="No-data">No data</MenuItem>
+					) : country ? (
+						data.map((item, index) => {
+							return (
+								<MenuItem key={index} value={item.name}>
+									{item.name}
+								</MenuItem>
+							);
+						})
 					) : (
-						data.map((item) => {
-							return <MenuItem value={item.value}>{item.label}</MenuItem>;
+						data.map((item, index) => {
+							return (
+								<MenuItem key={index} value={item.value}>
+									{item.label}
+								</MenuItem>
+							);
 						})
 					)}
 				</Select>
