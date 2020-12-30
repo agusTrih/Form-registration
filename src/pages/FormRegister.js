@@ -12,7 +12,10 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 margin-top: 5rem;
-
+@media (max-width: 968px) {
+  flex-direction: column;
+  padding: 10px;
+}
 `;
 const Section = Styled.div`
 background-color: ${(props) => (props.general ? "#E0E5ED" : "#E67E2E")};
@@ -20,6 +23,10 @@ padding: 50px;
 border-radius: ${(props) =>
 	props.general ? "10px 0px 0px 10px" : "0px 10px 10px 0px"};
 
+  @media (max-width: 968px) {
+    border-radius: ${(props) =>
+			props.general ? "10px 10px 0px 0px" : "0px 0px 10px 10px"};
+  }
 `;
 const Title = Styled.h2`
 color: ${(props) => (props.general ? "#367CDE" : "white")} ;
@@ -28,9 +35,20 @@ color: ${(props) => (props.general ? "#367CDE" : "white")} ;
 const FlexRows = Styled.div`
 display: flex;
 flex-direction: row;
-
+@media (max-width: 968px) {
+  display: flex;
+  flex-direction: column;
+ 
+}
 `;
 
+const Button = Styled.button`
+padding: 10px 50px;
+font-size: 16px;
+border: none;
+border-radius: 50px;
+font-weight: bold;
+`;
 export default function FormRegister() {
 	const [data, setData] = useState(null);
 	const [form, setForm] = useState({
@@ -75,7 +93,9 @@ export default function FormRegister() {
 					<SelectOption label="Title" data={DataTitle} />
 
 					<FlexRows>
-						<InputText label="First Name" />
+						<div style={{ paddingRight: "20px" }}>
+							<InputText label="First Name" />
+						</div>
 						<InputText label="Last Name" />
 					</FlexRows>
 					<SelectOption label="Position" data={DataPosition} />
@@ -87,15 +107,29 @@ export default function FormRegister() {
 				<div>
 					<InputText label="Address" />
 					<FlexRows>
-						<InputText label="Zip Code" />
-						<SelectOption label="Place" data={DataPlace} />
+						<div style={{ paddingRight: "20px", width: "100%" }}>
+							<InputText label="Zip Code" />
+						</div>
+						<div style={{ width: "100%" }}>
+							<SelectOption label="Place" data={DataPlace} />
+						</div>
 					</FlexRows>
 					<SelectOption country label="Country" data={data} />
 					<FlexRows>
-						<InputText label="Code" />
+						<div style={{ paddingRight: "20px" }}>
+							<InputText label="Code" />
+						</div>
 						<InputText label="Phone Number" />
 					</FlexRows>
 					<InputText label="Email" />
+					<div>
+						<label>
+							<input type="checkbox" /> I do accept the Terms and Conditions of
+							your site
+						</label>
+					</div>
+
+					<Button>Submit</Button>
 				</div>
 			</Section>
 		</Container>
