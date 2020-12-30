@@ -11,12 +11,17 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function InputText({ label }) {
+export default function InputText({ label, value, onChange }) {
 	const classes = useStyles();
 
 	return (
 		<div className={classes.root} noValidate autoComplete="off">
-			<TextField id="standard-basic" label={label} />
+			<TextField
+				id="standard-basic"
+				label={label}
+				value={value}
+				onChange={onchange}
+			/>
 		</div>
 	);
 }
