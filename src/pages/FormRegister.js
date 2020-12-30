@@ -80,6 +80,8 @@ export default function FormRegister() {
 		fetchDataCountry();
 		// eslint-disable-next-line
 	}, [1]);
+
+	const handleChange = () => {};
 	return (
 		<Container>
 			<Section general>
@@ -89,21 +91,21 @@ export default function FormRegister() {
 
 					<FlexRows>
 						<div style={{ paddingRight: "20px" }}>
-							<InputText label="First Name" />
+							<InputText label="First Name" value={form.first_name} />
 						</div>
-						<InputText label="Last Name" />
+						<InputText label="Last Name" value={form.last_name} />
 					</FlexRows>
 					<SelectOption label="Position" data={DataPosition} />
-					<InputText label="Company" />
+					<InputText label="Company" value={form.company} />
 				</div>
 			</Section>
 			<Section>
 				<Title>Contact Details</Title>
 				<div>
-					<InputText label="Address" />
+					<InputText label="Address" value={form.address} />
 					<FlexRows>
 						<div style={{ paddingRight: "20px", width: "100%" }}>
-							<InputText label="Zip Code" />
+							<InputText label="Zip Code" value={form.zip_code} />
 						</div>
 						<div style={{ width: "100%" }}>
 							<SelectOption label="Place" data={DataPlace} />
@@ -112,11 +114,11 @@ export default function FormRegister() {
 					<SelectOption country label="Country" data={data} />
 					<FlexRows>
 						<div style={{ paddingRight: "20px" }}>
-							<InputText label="Code" />
+							<InputText label="Code" value={form.code} />
 						</div>
-						<InputText label="Phone Number" />
+						<InputText label="Phone Number" value={form.phone_number} />
 					</FlexRows>
-					<InputText label="Email" />
+					<InputText label="Your Email" value={form.email} />
 
 					<div style={{ marginTop: "20px", display: "flex" }}>
 						<input type="checkbox" /> I do accept the Terms and Conditions of
