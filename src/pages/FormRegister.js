@@ -6,12 +6,14 @@ import SelectOption from "../Components/SelectOption";
 import DataPlace from "../Data/DataPlace";
 import DataTitle from "../Data/DataTitle";
 import DataPosition from "../Data/DataPosition";
+import ModalPopUp from "../Components/ModalPopUp";
 
 const Container = Styled.section`
 display: flex;
 flex-direction: row;
 justify-content: center;
-margin-top: 5rem;
+margin: 2rem;
+
 @media (max-width: 968px) {
   flex-direction: column;
   padding: 10px;
@@ -42,13 +44,6 @@ flex-direction: row;
 }
 `;
 
-const Button = Styled.button`
-padding: 10px 50px;
-font-size: 16px;
-border: none;
-border-radius: 50px;
-font-weight: bold;
-`;
 export default function FormRegister() {
 	const [data, setData] = useState(null);
 	const [form, setForm] = useState({
@@ -122,14 +117,13 @@ export default function FormRegister() {
 						<InputText label="Phone Number" />
 					</FlexRows>
 					<InputText label="Email" />
-					<div>
-						<label>
-							<input type="checkbox" /> I do accept the Terms and Conditions of
-							your site
-						</label>
+
+					<div style={{ marginTop: "20px", display: "flex" }}>
+						<input type="checkbox" /> I do accept the Terms and Conditions of
+						your site
 					</div>
 
-					<Button>Submit</Button>
+					<ModalPopUp />
 				</div>
 			</Section>
 		</Container>
